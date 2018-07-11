@@ -21,6 +21,19 @@ Puppet::Type.newtype(:transport) do
     end
     defaultto({})
   end
+
+  # NOTE: Should match the behavior of the default titlepattern which is to set
+  #       the `name` parameter. Intentionally uses a lambda to disqualify this
+  #       type from compilation by `puppet generate types` so that the
+  #       metaparameter definition below still works.
+  #
+  # FIXME: This is some epic hacky bullshit that will extract a price from
+  #        someone in the future If you're reading this comment, find a way
+  #        to kill this. Good luck and godspeed.
+  def self.title_patterns
+    [[/(.*)/m, [[:name, lambda {|x| x}]]]]
+  end
+
 end
 
 unless Puppet::Type.metaparams.include? :transport
