@@ -28,7 +28,7 @@ Puppet::Type.newtype(:transport) do
   #       metaparameter definition below still works.
   #
   # FIXME: This is some epic hacky bullshit that will extract a price from
-  #        someone in the future If you're reading this comment, find a way
+  #        someone in the future. If you're reading this comment, find a way
   #        to kill this. Good luck and godspeed.
   def self.title_patterns
     [[/(.*)/m, [[:name, lambda {|x| x}]]]]
